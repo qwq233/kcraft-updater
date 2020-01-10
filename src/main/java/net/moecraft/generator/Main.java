@@ -29,8 +29,8 @@ public class Main {
         try {
             Init.initSystem(args);
 
-            SelfUpdateApplier selfUpdateApplier = new SelfUpdateApplier();
-            selfUpdateApplier.start("generator-1.0-SNAPSHOT.jar");
+            // SelfUpdateApplier selfUpdateApplier = new SelfUpdateApplier();
+            // selfUpdateApplier.start("generator-1.0-SNAPSHOT.jar");
 
             String basePath = Environment.getBaseMoeCraftPath();
             Environment.getLogger().log(Level.FINEST, "Current path: " + basePath);
@@ -40,10 +40,11 @@ public class Main {
             else
                 runAsGenerator();
         } catch (NoClassDefFoundError ex) {
-            Environment.showErrorMessage("MoeCraft-Toolbox 缺少必要的组件，无法启动。\n请确保你下载的是完整的客户端。尝试前往用户中心下载最新版本客户端\n\n" + ex.toString());
+            Environment.showErrorMessage(
+                    "KCraft-Toolbox 缺少必要的组件，无法启动。\n请确保你下载的是完整的客户端。尝试前往用户中心下载最新版本客户端\n\n" + ex.toString());
             System.exit(2);
         } catch (Throwable ex) {
-            Environment.showErrorMessage("MoeCraft-Toolbox 遇到严重错误，即将退出：\n" + ex.toString());
+            Environment.showErrorMessage("KCraft-Toolbox 遇到严重错误，即将退出：\n" + ex.toString());
             Environment.getLogger().log(Level.SEVERE, "Unexpected Exception.");
             ex.printStackTrace();
             System.exit(1);
@@ -58,13 +59,17 @@ public class Main {
         MetaScanner scanner = new MetaScanner((CommonScanner) Environment.getMetaScanner().newInstance());
 
         if (!Environment.getBaseMoeCraftDir().exists()) {
-            Environment.getLogger().log(Level.SEVERE, "generator_config.json not found on '" + generatorConfigFile.getCanonicalPath() + "'. Please specify where generator_config.json is and run this program again.");
+            Environment.getLogger().log(Level.SEVERE,
+                    "generator_config.json not found on '" + generatorConfigFile.getCanonicalPath()
+                            + "'. Please specify where generator_config.json is and run this program again.");
             System.exit(8);
         }
 
         MetaResult result = scanner.scan();
-        result.setDescription(Environment.getUpdateDescription().isEmpty() ? config.getDescription() : Environment.getUpdateDescription());
-        result.setVersion(Environment.getUpdateVersion().isEmpty() ? config.getVersion() : Environment.getUpdateVersion());
+        result.setDescription(Environment.getUpdateDescription().isEmpty() ? config.getDescription()
+                : Environment.getUpdateDescription());
+        result.setVersion(
+                Environment.getUpdateVersion().isEmpty() ? config.getVersion() : Environment.getUpdateVersion());
 
         if (config.getObjectSize() > 0) {
             Environment.getLogger().info("Generating objects....");
@@ -76,7 +81,7 @@ public class Main {
     }
 
     private static void runAsUpdater() throws Exception {
-        //testParser(new NewMoeEngine(), result);
+        // testParser(new NewMoeEngine(), result);
         Environment.getLogger().finest("Starting Updater UI Thread ...");
 
         UpdaterUI uiProvider = (UpdaterUI) Environment.getUiProvider().newInstance();
@@ -91,14 +96,16 @@ public class Main {
                 GeneratorEngine instance = (GeneratorEngine) engine.newInstance();
                 String generateResult = instance.encode(result);
                 instance.save(generateResult);
-                Environment.getLogger().log(Level.FINE, "Write result formatted in " + engine.getSimpleName() + "  to " + Environment.getBaseMoeCraftPath());
+                Environment.getLogger().log(Level.FINE, "Write result formatted in " + engine.getSimpleName() + "  to "
+                        + Environment.getBaseMoeCraftPath());
             } else {
                 Environment.getLogger().info("Detected invalid generator engine: " + engine.getSimpleName());
             }
         }
     }
 
-    private static <T extends GeneratorEngine & ParserEngine> void testParser(T instance, MetaResult result) throws Exception {
+    private static <T extends GeneratorEngine & ParserEngine> void testParser(T instance, MetaResult result)
+            throws Exception {
         String generateResult1 = instance.encode(result);
         MetaResult decodeResult = instance.decode(generateResult1);
         String generateResult2 = instance.encode(decodeResult);

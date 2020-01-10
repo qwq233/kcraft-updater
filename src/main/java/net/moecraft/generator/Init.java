@@ -1,5 +1,6 @@
 package net.moecraft.generator;
 //--------------------------------------------------
+
 // Class net.moecraft.generator.Init
 //--------------------------------------------------
 // Written by Kenvix <i@kenvix.com>
@@ -24,17 +25,20 @@ class Init {
         try {
             Environment.getLogger().setLevel(Level.FINE);
             out.println(Init.getHeader());
-            out.printf("Built at %s. Running at JDK %s\n", BuildConfig.BUILD_DATE.toString(), System.getProperty("java.version"));
+            out.printf("Built at %s. Running at JDK %s\n", BuildConfig.BUILD_DATE.toString(),
+                    System.getProperty("java.version"));
 
             Environment.loadEnvironment(getCmd(args));
             File baseMoeCraftDir = Environment.getBaseMoeCraftDir();
 
             if (!baseMoeCraftDir.exists()) {
                 try {
-                    Environment.getLogger().log(Level.FINE, "MoeCraft root directory not found on '" + baseMoeCraftDir.getCanonicalPath() + "'. Create.");
+                    Environment.getLogger().log(Level.FINE,
+                            "KCraft root directory not found on '" + baseMoeCraftDir.getCanonicalPath() + "'. Create.");
                     FileUtils.forceMkdir(baseMoeCraftDir);
                 } catch (Exception ex) {
-                    Environment.getLogger().log(Level.SEVERE, "Create MoeCraft root directory FAILED '" + baseMoeCraftDir.getCanonicalPath() + "'.");
+                    Environment.getLogger().log(Level.SEVERE,
+                            "Create KCraft root directory FAILED '" + baseMoeCraftDir.getCanonicalPath() + "'.");
                     System.exit(9);
                 }
 
@@ -53,11 +57,13 @@ class Init {
     static CommandLine getCmd(String[] args) throws ParseException {
         Options ops = new Options();
 
-        ops.addOption("p", "path", true, "Path to MoeCraft root directory. Default ./MoeCraft");
+        ops.addOption("p", "path", true, "Path to KCraft root directory. Default ./MoeCraft");
         ops.addOption("g", "generator", false, "Use Generator mode instead of updater mode.");
         ops.addOption("c", "config", true, "Path to generator_config.json. Default ./generator_config.json");
-        ops.addOption("i", "description", true, "[Generator] Add a description for this update. Default for description generator_config.json");
-        ops.addOption("l", "version", true, "[Generator] Version this update. Default for version in generator_config.json");
+        ops.addOption("i", "description", true,
+                "[Generator] Add a description for this update. Default for description generator_config.json");
+        ops.addOption("l", "version", true,
+                "[Generator] Version this update. Default for version in generator_config.json");
         ops.addOption("v", "verbose", false, "Verbose logging mode.");
         ops.addOption("cli", false, "Use Command Line User Interface.");
         ops.addOption("h", "help", false, "Print help messages");
@@ -77,11 +83,8 @@ class Init {
             public String format(LogRecord record) {
                 return String.format("[%s] [%s] [%s=>%s] %s\n",
                         new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date(record.getMillis())),
-                        record.getLevel().toString(),
-                        record.getSourceClassName(),
-                        record.getSourceMethodName(),
-                        record.getMessage()
-                );
+                        record.getLevel().toString(), record.getSourceClassName(), record.getSourceMethodName(),
+                        record.getMessage());
             }
         });
 
@@ -97,6 +100,7 @@ class Init {
     }
 
     static String getHeader() {
-        return String.format("MoeCraft Updater Meta Generator Ver.%s/%d // Written by Kenvix", BuildConfig.VERSION, BuildConfig.VERSION_CODE);
+        return String.format("KCraft Updater Meta Generator Ver.%s/%d // Written by Kenvix", BuildConfig.VERSION,
+                BuildConfig.VERSION_CODE);
     }
 }

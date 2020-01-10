@@ -30,19 +30,21 @@ import java.util.logging.Logger;
 public final class Environment {
 
     private static CommandLine cmd;
-    private final static Class[] generatorEngines = {BalthildEngine.class, NewMoeEngine.class};
+    private final static Class[] generatorEngines = { BalthildEngine.class, NewMoeEngine.class };
     private static File baseMoeCraftDir;
-    private final static Class[] parserEngines = {NewMoeEngine.class};
+    private final static Class[] parserEngines = { NewMoeEngine.class };
     private static File generatorConfigFile;
     private static String baseMoeCraftPath;
     private static String updateDescription;
     private static String updateVersion;
     private final static Class metaScanner = FileScanner.class;
-    private final static Class[] repoManager = {AccountCenterRepoManager.class, LocalIntegratedRepoManager.class};
+    private final static Class[] repoManager = { AccountCenterRepoManager.class, LocalIntegratedRepoManager.class };
     private final static String dnsRepoDomain = "updater-repo.moecraft.net";
-    private static final String repoManagerURL = "https://user.moecraft.net:8443/API/Updater/repo";
-    private final static String appName = "MoeCraft Toolbox";
-    private final static String outJsonName = "moecraft.json";
+    // private static final String repoManagerURL =
+    // "https://user.moecraft.net:8443/API/Updater/repo";
+    private static final String repoManagerURL = "https://modpack.qwq2333.top/repo";
+    private final static String appName = "KCraft Toolbox";
+    private final static String outJsonName = "kcraft.json";
     private static Class uiProvider;
     private static Repo[] repos;
     private final static int downloadMaxTries = 5;
@@ -209,7 +211,8 @@ public final class Environment {
                 try {
                     return repos = ((RepoManager) repoManager.newInstance()).getRepos();
                 } catch (Exception ex) {
-                    Environment.getLogger().warning("Repo manager " + repoManager.getSimpleName() + " Failed! Fallback...");
+                    Environment.getLogger()
+                            .warning("Repo manager " + repoManager.getSimpleName() + " Failed! Fallback...");
                 }
             }
         }
@@ -240,7 +243,8 @@ public final class Environment {
      * Get JVM PID
      *
      * @return int JVM PID
-     * @throws UnsupportedOperationException Getting PID is not support on current JVM
+     * @throws UnsupportedOperationException Getting PID is not support on current
+     *                                       JVM
      */
     @SuppressWarnings("all")
     public static int getJvmPid() {
@@ -258,7 +262,7 @@ public final class Environment {
 
             return jvmPid = (Integer) pid_method.invoke(mgmt);
         } catch (Throwable ignored1) {
-            //Fallback
+            // Fallback
             String jvmName = runtime.getName();
             String pidString = jvmName.split("@")[0];
 
@@ -275,7 +279,8 @@ public final class Environment {
 
     public static String getJvmPath(boolean useJavaW) {
         if (isRunningOnWindowsPlatform)
-            return System.getProperties().getProperty("java.home") + File.separator + "bin" + File.separator + (useJavaW ? "javaw.exe" : "java.exe");
+            return System.getProperties().getProperty("java.home") + File.separator + "bin" + File.separator
+                    + (useJavaW ? "javaw.exe" : "java.exe");
         else
             return System.getProperties().getProperty("java.home") + File.separator + "bin" + File.separator + "java";
     }

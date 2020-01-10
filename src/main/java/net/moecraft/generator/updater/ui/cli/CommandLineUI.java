@@ -74,22 +74,22 @@ public class CommandLineUI implements UpdaterUI, Observer {
 
     final protected void showUpdateFinishedPage(MetaResult remoteResult) {
         printBoldBorderLine();
-        logln("更新 MoeCraft 客户端完成。MoeCraft 客户端已被安装到此文件夹下：");
+        logln("更新 KCraft 客户端完成。KCraft 客户端已被安装到此文件夹下：");
         logln(Environment.getBaseMoeCraftPath());
         logln("请打开上述文件夹，启动启动器，即可开始游戏。（启动器的启动方法见用户中心的客户端下载页）");
         logln("");
         logln("注意：如果你需要添加自定义 Mod, 请打开 Updater/Mods 文件夹(注意大小写), 并把你的 Mod 放入这个文件夹中, 然后再次运行更新器. 不要把 Mod 直接放在 .minecraft/mods 中, 否则它们会被删除.");
 
         printNormalBorderLine();
-        logf("MoeCraft 版本号：%s // 发行时间：%s\n", remoteResult.getVersion(), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date(remoteResult.getTime())));
+        logf("KCraft 版本号：%s // 发行时间：%s\n", remoteResult.getVersion(),
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date(remoteResult.getTime())));
         logln(remoteResult.getDescription());
     }
-
 
     final protected Repo[] showWelcomePage() throws UpdateCriticalException {
         printBoldBorderLine();
 
-        logln("欢迎使用 MoeCraft 客户端更新器");
+        logln("欢迎使用 KCraft 客户端更新器");
         logln("正在获取更新节点列表，请稍候 ...");
 
         Repo[] repos = Environment.getRepos();
@@ -104,7 +104,7 @@ public class CommandLineUI implements UpdaterUI, Observer {
         Repo[] repos = Environment.getRepos();
 
         UserFileRegister.createUserModsDir();
-        logln("说明: 该程序将于它所在的文件夹下的 MoeCraft 文件夹安装本客户端, 并删除该文件夹内的其他 MineCraft 版本. 请勿把安装器与无关文件此文件夹内, 否则, 使用者需自行承担可能发生的数据损失.");
+        logln("说明: 该程序将于它所在的文件夹下的 KCraft 文件夹安装本客户端, 并删除该文件夹内的其他 Minecraft 版本. 请勿把安装器与无关文件此文件夹内, 否则, 使用者需自行承担可能发生的数据损失.");
         logln("注意: 如果你需要添加自定义 Mod, 请打开 Updater/Mods 文件夹(注意大小写), 并把你的 Mod 放入这个文件夹中. 不要把 Mod 直接放在 .minecraft/mods 中, 否则它们会被删除.");
 
         printNormalBorderLine();
