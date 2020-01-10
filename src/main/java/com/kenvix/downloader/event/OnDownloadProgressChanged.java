@@ -7,7 +7,7 @@
 package com.kenvix.downloader.event;
 
 import com.kenvix.downloader.download.DownloadMission;
-import net.moecraft.generator.meta.FileNode;
+import net.kcraft.generator.meta.FileNode;
 
 @FunctionalInterface
 public interface OnDownloadProgressChanged {

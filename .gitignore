@@ -1,6 +1,6 @@
 build
-/MoeCraft
-/MoeCraftX
+/kcraft
+/kcraftX
 Deployment
 out
 /Updater
@@ -13,4 +13,5 @@ Launcher.jar
 /.settings
 .classpath
 .project
+bin
 

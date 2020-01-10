@@ -2,7 +2,7 @@
   <artifact name="Toolbox">
     <output-path>$PROJECT_DIR$/out/artifacts/Toolbox</output-path>
     <root id="root">
-      <element id="archive" name="MoeCraft-Toolbox.jar">
+      <element id="archive" name="kcraft-Toolbox.jar">
         <element id="module-output" name="updater.generator_main" />
         <element id="directory" name="META-INF">
           <element id="dir-copy" path="$PROJECT_DIR$/src/main/java/META-INF" />

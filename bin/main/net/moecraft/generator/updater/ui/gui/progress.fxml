@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
             prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="net.moecraft.generator.updater.ui.gui.ProgressController">
+            fx:controller="net.kcraft.generator.updater.ui.gui.ProgressController">
     <children>
         <Label fx:id="TitleBar" layoutX="40.0" layoutY="34.0" text="操作进行中，请稍待片刻。" AnchorPane.leftAnchor="30.0"
                AnchorPane.topAnchor="30.0">

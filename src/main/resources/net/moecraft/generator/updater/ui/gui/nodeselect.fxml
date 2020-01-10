@@ -10,7 +10,7 @@
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="net.moecraft.generator.updater.ui.gui.NodeSelectController">
+            fx:controller="net.kcraft.generator.updater.ui.gui.NodeSelectController">
     <children>
         <Label layoutX="40.0" layoutY="44.0" text="更新节点" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0"/>
         <ChoiceBox fx:id="NodeBox" layoutX="21.0" layoutY="68.0" prefHeight="23.0" prefWidth="200.0"
