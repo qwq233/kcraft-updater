@@ -10,3 +10,7 @@ desktop.ini
 generator_config.json
 Launcher.jar
 .idea/workspace.xml
+/.settings
+.classpath
+.project
+
