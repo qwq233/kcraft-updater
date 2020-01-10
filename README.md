@@ -2,8 +2,9 @@
 KCraft Updater and Generator
 
 # 协议
-根据作者要求，本项目采用GPL 3.0协议
+根据作者要求，本项目采用GPL 2.0 协议
+[授权图片](https://s2.ax1x.com/2020/01/10/l4nFpQ.png)
 
 # 作者
-编程: [kenvix](https://github.com/kenvix/)
-界面：[zxb1425](https://github.com/zbx1425)
+ [kenvix](https://kenvix.com)
+ newbieZBX
