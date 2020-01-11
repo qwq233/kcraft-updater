@@ -24,6 +24,9 @@ import net.kcraft.generator.updater.ui.cli.CommandLineUI;
 import net.kcraft.generator.updater.ui.gui.FXGraphicalUI;
 import org.apache.commons.cli.CommandLine;
 import org.jetbrains.annotations.NotNull;
+import javax.swing.*;
+
+
 
 
 public final class Environment {
@@ -60,7 +63,7 @@ public final class Environment {
     private static boolean isRunningOnWindowsPlatform;
     private static int jvmPid = -1;
 
-    static void loadEnvironment(CommandLine cmd) throws IOException {
+    static void loadEnvironment(final CommandLine cmd) throws IOException {
         Environment.cmd = cmd;
 
         uiProvider = cmd.hasOption("cli") ? CommandLineUI.class : FXGraphicalUI.class;
@@ -163,7 +166,7 @@ public final class Environment {
         return updateVersion;
     }
 
-    public static void setUpdateVersion(String updateVersion) {
+    public static void setUpdateVersion(final String updateVersion) {
         Environment.updateVersion = updateVersion;
     }
 
@@ -171,7 +174,7 @@ public final class Environment {
         return updateDescription;
     }
 
-    public static void setUpdateDescription(String updateDescription) {
+    public static void setUpdateDescription(final String updateDescription) {
         Environment.updateDescription = updateDescription;
     }
 
@@ -205,11 +208,11 @@ public final class Environment {
 
     public static Repo[] getRepos() {
         if (repos == null) {
-            Class[] repoManagers = Environment.getRepoManager();
-            for (Class repoManager : repoManagers) {
+            final Class[] repoManagers = Environment.getRepoManager();
+            for (final Class repoManager : repoManagers) {
                 try {
                     return repos = ((RepoManager) repoManager.newInstance()).getRepos();
-                } catch (Exception ex) {
+                } catch (final Exception ex) {
                     Environment.getLogger()
                             .warning("Repo manager " + repoManager.getSimpleName() + " Failed! Fallback...");
                 }
@@ -222,7 +225,7 @@ public final class Environment {
         return isRunningOnWindowsPlatform;
     }
 
-    public static void setRepos(Repo[] repos) {
+    public static void setRepos(final Repo[] repos) {
         Environment.repos = repos;
     }
 
@@ -230,7 +233,7 @@ public final class Environment {
         return userModsPath;
     }
 
-    public static void showErrorMessage(String message) {
+    public static void showErrorMessage(final String message) {
         if (!isConsoleWindowExists) {
             JOptionPane.showMessageDialog(null, message, "错误", JOptionPane.ERROR_MESSAGE);
         }
@@ -250,33 +253,33 @@ public final class Environment {
         if (jvmPid != -1)
             return jvmPid;
 
-        RuntimeMXBean runtime = ManagementFactory.getRuntimeMXBean();
+        final RuntimeMXBean runtime = ManagementFactory.getRuntimeMXBean();
         try {
-            java.lang.reflect.Field jvm = runtime.getClass().getDeclaredField("jvm");
+            final java.lang.reflect.Field jvm = runtime.getClass().getDeclaredField("jvm");
             jvm.setAccessible(true);
 
-            sun.management.VMManagement mgmt = (sun.management.VMManagement) jvm.get(runtime);
-            java.lang.reflect.Method pid_method = mgmt.getClass().getDeclaredMethod("getProcessId");
+            final sun.management.VMManagement mgmt = (sun.management.VMManagement) jvm.get(runtime);
+            final java.lang.reflect.Method pid_method = mgmt.getClass().getDeclaredMethod("getProcessId");
             pid_method.setAccessible(true);
 
             return jvmPid = (Integer) pid_method.invoke(mgmt);
-        } catch (Throwable ignored1) {
+        } catch (final Throwable ignored1) {
             // Fallback
-            String jvmName = runtime.getName();
-            String pidString = jvmName.split("@")[0];
+            final String jvmName = runtime.getName();
+            final String pidString = jvmName.split("@")[0];
 
             if (pidString == null || pidString.isEmpty())
                 throw new UnsupportedOperationException();
 
             try {
                 return jvmPid = Integer.parseInt(pidString);
-            } catch (NumberFormatException exception) {
+            } catch (final NumberFormatException exception) {
                 throw new UnsupportedOperationException();
             }
         }
     }
 
-    public static String getJvmPath(boolean useJavaW) {
+    public static String getJvmPath(final boolean useJavaW) {
         if (isRunningOnWindowsPlatform)
             return System.getProperties().getProperty("java.home") + File.separator + "bin" + File.separator
                     + (useJavaW ? "javaw.exe" : "java.exe");
