@@ -24,7 +24,7 @@ import net.kcraft.generator.updater.ui.cli.CommandLineUI;
 import net.kcraft.generator.updater.ui.gui.FXGraphicalUI;
 import org.apache.commons.cli.CommandLine;
 import org.jetbrains.annotations.NotNull;
-import javax.swing.*;
+import java.swing.*
 
 
 
