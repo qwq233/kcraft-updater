@@ -6,6 +6,13 @@
 
 package net.kcraft.generator;
 
+import java.io.File;
+import java.io.IOException;
+import java.lang.management.ManagementFactory;
+import java.lang.management.RuntimeMXBean;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Logger;
 import net.kcraft.generator.jsonengine.engine.BalthildEngine;
 import net.kcraft.generator.jsonengine.engine.NewMoeEngine;
 import net.kcraft.generator.meta.scanner.FileScanner;
@@ -18,14 +25,6 @@ import net.kcraft.generator.updater.ui.gui.FXGraphicalUI;
 import org.apache.commons.cli.CommandLine;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
-import java.lang.management.ManagementFactory;
-import java.lang.management.RuntimeMXBean;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.logging.Logger;
 
 public final class Environment {
 
@@ -39,7 +38,7 @@ public final class Environment {
     private static String updateVersion;
     private final static Class metaScanner = FileScanner.class;
     private final static Class[] repoManager = { AccountCenterRepoManager.class, LocalIntegratedRepoManager.class };
-    private final static String dnsRepoDomain = "updater-repo.kcraft.net";
+    private final static String dnsRepoDomain = "updater-repo.moecraft.net";
     // private static final String repoManagerURL =
     // "https://user.kcraft.net:8443/API/Updater/repo";
     private static final String repoManagerURL = "https://modpack.qwq2333.top/repo";
@@ -66,7 +65,7 @@ public final class Environment {
 
         uiProvider = cmd.hasOption("cli") ? CommandLineUI.class : FXGraphicalUI.class;
 
-        basekcraftDir = new File(cmd.hasOption('p') ? cmd.getOptionValue('p') : "./kcraft");
+        basekcraftDir = new File(cmd.hasOption('p') ? cmd.getOptionValue('p') : "./KCraft");
         generatorConfigFile = new File(cmd.hasOption('c') ? cmd.getOptionValue('c') : "./generator_config.json");
         basekcraftPath = basekcraftDir.getCanonicalPath().replace('\\', '/');
         updateDescription = cmd.hasOption('i') ? cmd.getOptionValue('i') : "";
