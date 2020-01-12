@@ -41,12 +41,15 @@ public final class Environment {
     private static String updateVersion;
     private final static Class metaScanner = FileScanner.class;
     private final static Class[] repoManager = { AccountCenterRepoManager.class, LocalIntegratedRepoManager.class };
-    private final static String dnsRepoDomain = "updater-repo.moecraft.net";
-    // private static final String repoManagerURL =
-    // "https://user.kcraft.net:8443/API/Updater/repo";
+    private final static String dnsRepoDomain = "updater-repo.moecraft.net";//不确定有何用处，故不作更改
+    /*
+    节点仓库，如果你是群组服或者有非同一时间同步多个客户端需求，你也可以把他当做客户端列表。
+    节点仓库的示例文件您可以在wiki文件夹找到
+    该文件应为json格式，且不应该有注释。地址则为您的网页服务器（即客户端文件存放服务器）
+     */
     private static final String repoManagerURL = "https://modpack.qwq2333.top/repo";
-    private final static String appName = "KCraft Toolbox";
-    private final static String outJsonName = "kcraft.json";
+    private final static String appName = "KCraft Toolbox"; //应用名，你应该根据个人需求修改
+    private final static String outJsonName = "kcraft.json";//作为生成器使用时输出的json文件，可改可不改
     private static Class uiProvider;
     private static Repo[] repos;
     private final static int downloadMaxTries = 5;
@@ -68,7 +71,7 @@ public final class Environment {
 
         uiProvider = cmd.hasOption("cli") ? CommandLineUI.class : FXGraphicalUI.class;
 
-        basekcraftDir = new File(cmd.hasOption('p') ? cmd.getOptionValue('p') : "./KCraft");
+        basekcraftDir = new File(cmd.hasOption('p') ? cmd.getOptionValue('p') : "./KCraft");//客户端输出文件夹，你应该按自己的需求修改它
         generatorConfigFile = new File(cmd.hasOption('c') ? cmd.getOptionValue('c') : "./generator_config.json");
         basekcraftPath = basekcraftDir.getCanonicalPath().replace('\\', '/');
         updateDescription = cmd.hasOption('i') ? cmd.getOptionValue('i') : "";
