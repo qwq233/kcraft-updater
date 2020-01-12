@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.kcraft.generator.updater.ui.gui.NodeSelectController">
     <children>
-        <Label layoutX="40.0" layoutY="150.0" text="更新节点" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="150.0" />
+        <Label layoutX="40.0" layoutY="150.0" text="安装\更新的客户端" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="150.0" />
         <ChoiceBox fx:id="NodeBox" layoutX="40.0" layoutY="171.0" prefHeight="23.0" prefWidth="200.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="171.0" />
         <Button fx:id="StartBtn" layoutX="386.0" layoutY="132.0" mnemonicParsing="false" onAction="#confirmNode" prefHeight="100.0" prefWidth="200.0" text="检查更新&#10;(安装 KCraft)" textAlignment="CENTER" wrapText="true" AnchorPane.rightAnchor="94.0" AnchorPane.topAnchor="132.0">
             <font>
