@@ -6,13 +6,6 @@
 
 package net.kcraft.generator;
 
-import java.io.File;
-import java.io.IOException;
-import java.lang.management.ManagementFactory;
-import java.lang.management.RuntimeMXBean;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.logging.Logger;
 import net.kcraft.generator.jsonengine.engine.BalthildEngine;
 import net.kcraft.generator.jsonengine.engine.NewMoeEngine;
 import net.kcraft.generator.meta.scanner.FileScanner;
@@ -24,8 +17,15 @@ import net.kcraft.generator.updater.ui.cli.CommandLineUI;
 import net.kcraft.generator.updater.ui.gui.FXGraphicalUI;
 import org.apache.commons.cli.CommandLine;
 import org.jetbrains.annotations.NotNull;
-import java.swing.*
 
+import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
+import java.lang.management.ManagementFactory;
+import java.lang.management.RuntimeMXBean;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Logger;
 
 
 

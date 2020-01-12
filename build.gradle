@@ -10,7 +10,7 @@ tasks.withType(JavaCompile){
 
 group 'net.kcraft'
 version '2.0-SNAPSHOT'
-def applicationName = 'kcraft-Toolbox'
+def applicationName = 'KCraft-Toolbox'
 def versionCode = 2
 
 archivesBaseName = 'generator'
@@ -51,8 +51,8 @@ jar {
     }
     manifest {
         attributes(
-          'Class-Path': configurations.compile.collect { 'Updater/Libraries/' + it.getName() }.join(' '),
-          'Main-Class': 'net.kcraft.generator.Main'
+                'Class-Path': configurations.compile.collect { 'Updater/Libraries/' + it.getName() }.join(' '),
+                'Main-Class': 'net.kcraft.generator.Main'
         )
     }
 }
