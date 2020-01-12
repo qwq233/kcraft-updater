@@ -154,7 +154,7 @@ public class LocalIntegratedRepoManager implements RepoManager {
 java -jar 构建出的jar文件 -g -c 指定的配置文件
 ```
 
-2. 打开 Deployment 文件夹，将此文件夹的内容直接全部上传到 填写repo时输入的目录
+2. 打开 Deployment 文件夹，将此文件夹的内容直接全部上传到 填写repo时输入的目录。
 
 # 作者<br />
  编程：[kenvix](https://kenvix.com)<br />
