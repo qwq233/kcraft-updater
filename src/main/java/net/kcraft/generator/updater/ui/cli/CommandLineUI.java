@@ -6,6 +6,7 @@
 
 package net.kcraft.generator.updater.ui.cli;
 
+
 import net.kcraft.generator.Environment;
 import net.kcraft.generator.meta.MetaResult;
 import net.kcraft.generator.updater.repo.Repo;
@@ -15,7 +16,6 @@ import net.kcraft.generator.updater.update.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Consumer;
-
 /**
  * Command Line UI and basic of GraphicalUI
  */
@@ -81,10 +81,10 @@ public class CommandLineUI implements UpdaterUI, Observer {
         logln("注意：如果你需要添加自定义 Mod, 请打开 Updater/Mods 文件夹(注意大小写), 并把你的 Mod 放入这个文件夹中, 然后再次运行更新器. 不要把 Mod 直接放在 .minecraft/mods 中, 否则它们会被删除.");
 
         printNormalBorderLine();
-        logf("KCraft 版本号：%s // 发行时间：%s\n", remoteResult.getVersion(),
-                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date(remoteResult.getTime())));
+        logf("KCraft 版本号：%s // 发行时间：%s\n", remoteResult.getVersion(), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date(remoteResult.getTime())));
         logln(remoteResult.getDescription());
     }
+
 
     final protected Repo[] showWelcomePage() throws UpdateCriticalException {
         printBoldBorderLine();
@@ -104,7 +104,7 @@ public class CommandLineUI implements UpdaterUI, Observer {
         Repo[] repos = Environment.getRepos();
 
         UserFileRegister.createUserModsDir();
-        logln("说明: 该程序将于它所在的文件夹下的 KCraft 文件夹安装本客户端, 并删除该文件夹内的其他 Minecraft 版本. 请勿把安装器与无关文件此文件夹内, 否则, 使用者需自行承担可能发生的数据损失.");
+        logln("说明: 该程序将于它所在的文件夹下的 KCraft 文件夹安装本客户端, 并删除该文件夹内的其他 MineCraft 版本. 请勿把安装器与无关文件此文件夹内, 否则, 使用者需自行承担可能发生的数据损失.");
         logln("注意: 如果你需要添加自定义 Mod, 请打开 Updater/Mods 文件夹(注意大小写), 并把你的 Mod 放入这个文件夹中. 不要把 Mod 直接放在 .minecraft/mods 中, 否则它们会被删除.");
 
         printNormalBorderLine();
